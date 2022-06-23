@@ -28,7 +28,7 @@ section{
 </style>
 
 <script>
-function dateauto{
+function dateauto(){
     const d = new Date();
     let mon;
     if (d.getMonth() < 10) {
@@ -38,6 +38,5 @@ function dateauto{
     let fullDate = d.getFullYear() +"-" + mon +"-"+ d.getDate(); 
     document.getElementById("date").value = fullDate;
 }
-
 dateauto()
 </script>
