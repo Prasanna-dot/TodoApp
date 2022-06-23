@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 8vh;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+}
+
+.logoDiv{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoDiv h2{
+    font-family: 'Roboto', sans-serif;
+}
+
+.searchDiv{
+    width: 100%;
+    height: 100%;
+    padding-left: 30%;
+}
+
+.searchDiv ul li{
+    list-style: none;
+    padding: 3% 6%;
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+}
+
+.searchDiv ul li a:hover{
+    color: rgb(183, 183, 183);
+}
+
+#todosTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: rgb(228, 228, 228);
+  }
+  
+  #todosTable td, #todosTable th {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  #todosTable th:nth-child(1){
+    width: 10%;
+  }
+  
+  #todosTable th:nth-child(4){
+    width: 20%;
+  }
+  
+  #todosTable th:nth-child(3){
+    width: 20%;
+  }
+  
+  #todosTable th:nth-child(5){
+    width: 10%;
+  }
+  
+  #todosTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #A3AB78;
+    color: white;
+  }
+
+  #todosTable tr{
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(228, 228, 228);
+  }
+
+  #done{
+    width: 30%;
+    padding: 2% 2%;
+    border-radius: 100px;
+    border: none;
+    outline: none;
+    background-color: #A3AB78;
+    cursor: pointer;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+  }

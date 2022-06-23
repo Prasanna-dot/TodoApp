@@ -1,0 +1,39 @@
+<section>
+    <div class="main">
+        <form action="/add_task" method="post">
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+            <input type="date" name="todo[date]" id="date">
+            <input type="text" name="todo[add_task]" id="add_task" placeholder="Add your task..">
+            <input style="display:none;" type="text" name="todo[completed]" value="false">
+            
+            <button id="btn" type="submit">AddTask</button>
+        </form>
+    </div>
+</section>
+
+<style>
+.addTask{
+    color:rgb(183, 183, 183);
+    text-decoration: none;
+}
+
+.Overdue,.dayLater,.todayTasks{
+    text-decoration: none;
+    color: #000;
+}
+
+section{
+  height: 92vh;
+}
+</style>
+
+<script>
+    const d = new Date();
+    let mon;
+    if (d.getMonth() < 10) {
+        mon = "0"+(d.getMonth()+1);
+    }
+
+    let fullDate = d.getFullYear() +"-" + mon +"-"+ d.getDate(); 
+    document.getElementById("date").value = fullDate;
+</script>
