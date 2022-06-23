@@ -10,14 +10,14 @@
     </tr>
   </thead>
 
-  <tbody id="taskTbody">
+  <tbody>
     <% @todos.each do |todo| %>
     <% if Date.today > Date.parse(todo.date)%>
       <tr>
         <td><%= todo.id%></td>
         <td><%= todo.add_task %></td>
         <td><%= todo.date %></td>
-        <td><button id="done">Done</button></td>
+        <td><a href="/complete/<%= todo.id%>"><button id="done">Done</button></td>
        <% if todo.completed != false%>
         <td><i class="fa-solid fa-circle-check"></i> Completed</td>
         <%elsif todo.completed == false && Date.today > Date.parse(todo.date)%>
@@ -43,3 +43,4 @@
     color: #000;
 }
 </style>
+

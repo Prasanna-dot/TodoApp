@@ -12,10 +12,4 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-function myFunction(){
-    
-
-    console.log(document.getElementById("todosTable"));
-}
-
-myFunction()
+// document.getElementsByClassName().inner

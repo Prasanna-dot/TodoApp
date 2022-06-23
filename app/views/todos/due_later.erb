@@ -17,7 +17,7 @@
         <td><%= todo.id%></td>
         <td><%= todo.add_task %></td>
         <td><%= todo.date %></td>
-        <td><a href="complete/<%= todo.id%>"><button id="done">Done</button></td>
+        <td><a href="/complete/<%= todo.id%>"><button id="done">Done</button></td>
        <% if todo.completed != false%>
         <td><i class="fa-solid fa-circle-check"></i> Completed</td>
         <%elsif todo.completed == false && Date.today > Date.parse(todo.date)%>
