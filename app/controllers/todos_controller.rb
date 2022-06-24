@@ -22,12 +22,6 @@ class TodosController < ApplicationController
 
   def insert
     @todo = Todo.new(user_params)
-
-    respond_to do |format|
-      if @todo.save
-        format.html { redirect_to todo_url(@todo), notice: "Todo was successfully created." }
-      end
-    end
   end
 
   def complete
