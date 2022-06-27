@@ -1,6 +1,5 @@
 class TodosController < ApplicationController
   def index
-    # @user_params = user_params
   end
 
   def hearder
@@ -12,8 +11,6 @@ class TodosController < ApplicationController
 
   def due_today
     @todos = Todo.all
-
-
   end
 
   def due_later
@@ -22,12 +19,7 @@ class TodosController < ApplicationController
 
   def insert
     @todo = Todo.new(user_params)
-
-    respond_to do |format|
-      if @todo.save
-        format.html { redirect_to todo_url(@todo), notice: "Todo was successfully created." }
-      end
-    end
+    @todo.save
   end
 
   def complete
@@ -47,6 +39,7 @@ class TodosController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:todo).permit(:add_task, :date, :completed)
   end

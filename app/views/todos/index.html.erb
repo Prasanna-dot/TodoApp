@@ -2,8 +2,8 @@
     <div class="main">
         <form action="/add_task" method="post">
             <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-            <input type="date" name="todo[date]" id="date">
-            <input type="text" name="todo[add_task]" id="add_task" placeholder="Add your task..">
+            <input type="date" name="todo[date]" id="date" required>
+            <input type="text" name="todo[add_task]" id="add_task" placeholder="Add your task.." required>
             <input style="display:none;" type="text" name="todo[completed]" value="false">
             
             <button id="btn" type="submit">AddTask</button>
