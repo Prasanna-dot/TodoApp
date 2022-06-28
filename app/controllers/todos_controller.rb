@@ -19,10 +19,7 @@ class TodosController < ApplicationController
 
   def insert
     @todo = Todo.new(user_params)
-<<<<<<< HEAD
     @todo.save
-=======
->>>>>>> 1185b60f52959f561a740f5ad86e7a1839138c29
   end
 
   def complete
