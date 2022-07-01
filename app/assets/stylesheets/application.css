@@ -94,3 +94,7 @@
 section table{
     width: 100%;
 }
+
+.logoDiv h2{
+    font-family: 'Roboto', sans-serif;
+}
