@@ -65,10 +65,9 @@ header{
     text-align: left;
     color: rgb(0, 0, 0);
   }
-
-  #todosTable tr{
-    font-family: 'Roboto', sans-serif;
-    background-color: transparent;
+  
+  #todosTable tr td:nth-child(6){
+    border-radius: 0px 10px 10px 0px;
   }
 
   #done{
@@ -90,4 +89,5 @@ header{
     color: rgb(0, 0, 0);
     background-color: transparent;
     font-family: 'Roboto', sans-serif;
+    cursor: pointer;
   }
