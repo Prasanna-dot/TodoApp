@@ -1,41 +1,32 @@
 class TodosController < ApplicationController
   def index
+    @todos = Todo.all
   end
 
   def hearder
   end
 
-  def overdue
-    @todos = Todo.all
-  end
-
-  def due_today
-    @todos = Todo.all
-  end
-
-  def due_later
-    @todos = Todo.all
+  def login
   end
 
   def insert
     @todo = Todo.new(user_params)
-    @todo.save
+    if @todo.save
+      redirect_to "/"
+    end
   end
 
   def complete
     @comp = Todo.find(params[:id])
     @comp[:completed] = true
-    if Date.today < Date.parse(@comp.date) && @comp.save
-      @todos = Todo.all
-      render "todos/due_later"
-    elsif @comp.date == Date.today.to_s && @comp.save
-      @todos = Todo.all
-      render "todos/due_today"
-    else
-      @comp.save
-      @todos = Todo.all
-      render "todos/overdue"
-    end
+    @comp.save
+    redirect_to "/"
+  end
+
+  def delete
+    @comp = Todo.find(params[:id])
+    @comp.destroy
+    redirect_to "/"
   end
 
   private

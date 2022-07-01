@@ -1,14 +1,94 @@
-<section>
-    <div class="main">
-        <form action="/add_task" method="post">
-            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-            <input type="date" name="todo[date]" id="date" required>
-            <input type="text" name="todo[add_task]" id="add_task" placeholder="Add your task.." required>
-            <input style="display:none;" type="text" name="todo[completed]" value="false">
-            
-            <button id="btn" type="submit">AddTask</button>
-        </form>
-    </div>
+<section class="container">
+   <table id="todosTable">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Make completed</th>
+            <th>Status</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody id="taskTbody">
+        <tr>
+           <td style="color: #a4a4a4;" colspan="6">Due today</td>
+        <tr>
+        <% @todos.each do |todo| %>
+        <% if todo.date == Date.today.to_s %>
+            <tr>
+                <td class="id_row"><%= todo.id %></td>
+                <td><%= todo.add_task %></td>
+                <td><%= todo.date %></td>
+        <% if todo.completed == false %>
+                <td><a href="/complete/<%= todo.id %>"><button style="background-color: #A3AB78; cursor: pointer;" id="done">Done</button></td>
+        <% else %>
+                <td><button style="background-color: #a85050; cursor: not-allowed;" id="done">Done</button></td>
+        <% end %>
+        <% if todo.completed != false %>
+                <td><i class="fa-solid fa-circle-check"></i> Completed</td>
+        <% elsif todo.completed == false && Date.today > Date.parse(todo.date) %>
+                <td><i class="fa-solid fa-circle-info"></i> Pending</td>
+        <% else %>
+                <td><i class="fa-solid fa-spinner"></i> In progress</td>
+        <% end %>
+        <td style="text-align:center;"><a href="/delete/<%= todo.id %>"><button id="delete"><i class="fa-solid fa-trash"></i></button></td>
+            </tr>
+        <% end %>
+        <% end %>
+        <tr>
+           <td style="color: #a4a4a4;" colspan="6">Due later</td>
+        <tr>
+    <% @todos.each do |todo| %>
+    <% if Date.today < Date.parse(todo.date) %>
+      <tr>
+        <td><%= todo.id %></td>
+        <td><%= todo.add_task %></td>
+        <td><%= todo.date %></td>
+        <% if todo.completed == false %>
+                <td><a href="/complete/<%= todo.id %>"><button style="background-color: #A3AB78; cursor: pointer;" id="done">Done</button></td>
+        <% else %>
+                <td><button style="background-color: #a85050; cursor: not-allowed;" id="done">Done</button></td>
+        <% end %>
+       <% if todo.completed != false %>
+        <td><i class="fa-solid fa-circle-check"></i> Completed</td>
+        <% elsif todo.completed == false && Date.today > Date.parse(todo.date) %>
+        <td><i class="fa-solid fa-circle-info"></i> Pending</td>
+        <% else %>
+        <td><i class="fa-solid fa-spinner"></i> In progress</td>
+      <% end %>
+        <td style="text-align:center;"><a href="/delete/<%= todo.id %>"><button id="delete"><i class="fa-solid fa-trash"></i></button></td>
+      </tr>
+      <% end %>
+    <% end %>
+        <tr>
+           <td style="color: #a4a4a4;" colspan="6">Overdue</td>
+        <tr>
+    <% @todos.each do |todo| %>
+    <% if Date.today > Date.parse(todo.date) %>
+      <tr>
+        <td><%= todo.id %></td>
+        <td><%= todo.add_task %></td>
+        <td><%= todo.date %></td>
+        <% if todo.completed == false %>
+                <td><a href="/complete/<%= todo.id %>"><button style="background-color: #A3AB78; cursor: pointer;" id="done">Done</button></td>
+        <% else %>
+                <td><button style="background-color: #a85050; cursor: not-allowed;" id="done">Done</button></td>
+        <% end %>
+       <% if todo.completed != false %>
+        <td><i class="fa-solid fa-circle-check"></i> Completed</td>
+        <% elsif todo.completed == false && Date.today > Date.parse(todo.date) %>
+        <td><i class="fa-solid fa-circle-info"></i> Pending</td>
+        <% else %>
+        <td><i class="fa-solid fa-spinner"></i> In progress</td>
+      <% end %>
+        <td style="text-align:center;"><a href="/delete/<%= todo.id %>"><button id="delete"><i class="fa-solid fa-trash"></i></button></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
 </section>
 
 <style>
@@ -38,5 +118,6 @@ function dateauto(){
     let fullDate = d.getFullYear() +"-" + mon +"-"+ d.getDate(); 
     document.getElementById("date").value = fullDate;
 }
+
 dateauto()
 </script>
